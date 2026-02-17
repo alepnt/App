@@ -38,6 +38,12 @@ export class EventRepository {
     return [...this.participants.values()].filter((participant) => participant.eventId === eventId);
   }
 
+  findParticipantByEventAndName(eventId: string, name: string): Participant | undefined {
+    return [...this.participants.values()].find(
+      (participant) => participant.eventId === eventId && participant.name === name,
+    );
+  }
+
   saveVote(vote: Vote): void {
     this.votes.set(vote.id, vote);
   }

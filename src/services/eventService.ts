@@ -17,6 +17,10 @@ const joinSchema = z.object({
   guestName: z.string().min(2),
 });
 
+const closeDecisionSchema = z.object({
+  participantId: z.string().uuid(),
+});
+
 const voteSchema = z.object({
   participantId: z.string().uuid(),
   optionId: z.string().uuid(),
@@ -77,6 +81,16 @@ export class EventService {
       throw new AppError("Evento già chiuso", 409);
     }
 
+    const existingParticipant = this.repository.findParticipantByEventAndName(event.id, data.guestName);
+    if (existingParticipant) {
+      return {
+        eventId: event.id,
+        participantId: existingParticipant.id,
+        role: existingParticipant.role,
+        status: event.status,
+      };
+    }
+
     const participantId = uuid();
     this.repository.saveParticipant({
       id: participantId,
@@ -132,10 +146,16 @@ export class EventService {
     };
   }
 
-  closeDecision(eventId: string) {
+  closeDecision(eventId: string, payload: unknown) {
+    const data = closeDecisionSchema.parse(payload);
     const event = this.repository.getEvent(eventId);
     if (!event) {
       throw new AppError("Evento non trovato", 404);
+    }
+
+    const requester = this.repository.getParticipant(data.participantId);
+    if (!requester || requester.eventId !== eventId || requester.id !== event.hostParticipantId) {
+      throw new AppError("Solo l'host può chiudere l'evento", 403);
     }
 
     if (event.status === "closed") {

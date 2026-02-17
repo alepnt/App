@@ -1,0 +1,57 @@
+import request from "supertest";
+import { describe, expect, it } from "vitest";
+import { createApp } from "../src/app.js";
+
+describe("Planit MVP API", () => {
+  it("crea evento, join e voto", async () => {
+    const app = createApp();
+
+    const createResponse = await request(app).post("/api/events").send({
+      title: "Cena Team Giovedì",
+      closeAt: new Date(Date.now() + 60_000).toISOString(),
+      options: ["Pizzeria Roma", "Sushi Zen"],
+      hostName: "Luca",
+    });
+
+    expect(createResponse.status).toBe(201);
+    const eventId = createResponse.body.eventId as string;
+    const inviteToken = (createResponse.body.inviteLink as string).replace("/join/", "");
+
+    const joinResponse = await request(app).post("/api/events/join").send({
+      inviteToken,
+      guestName: "Sara",
+    });
+
+    expect(joinResponse.status).toBe(200);
+
+    const eventResponse = await request(app).get(`/api/events/${eventId}`);
+    const optionId = eventResponse.body.options[0].id;
+
+    const voteResponse = await request(app).post(`/api/events/${eventId}/votes`).send({
+      participantId: joinResponse.body.participantId,
+      optionId,
+      score: 1,
+    });
+
+    expect(voteResponse.status).toBe(200);
+    expect(voteResponse.body.accepted).toBe(true);
+    expect(voteResponse.body.totals[0].votes).toBe(1);
+  });
+
+  it("chiude la decisione con winner", async () => {
+    const app = createApp();
+
+    const createResponse = await request(app).post("/api/events").send({
+      title: "Pranzo",
+      closeAt: new Date(Date.now() + 60_000).toISOString(),
+      options: ["Burger", "Pokè"],
+      hostName: "Anna",
+    });
+
+    const eventId = createResponse.body.eventId as string;
+    const closeResponse = await request(app).post(`/api/events/${eventId}/close`).send();
+
+    expect(closeResponse.status).toBe(200);
+    expect(closeResponse.body.status).toBe("closed");
+  });
+});

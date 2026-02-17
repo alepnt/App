@@ -12,6 +12,8 @@ export interface Participant {
   eventId: string;
   name: string;
   role: "host" | "guest";
+  authToken: string;
+  createdAt: Date;
 }
 
 export interface Vote {

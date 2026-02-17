@@ -24,7 +24,7 @@ export function createEventRoutes(service: EventService): Router {
 
   router.post("/events/:eventId/votes", (req, res, next) => {
     try {
-      const response = service.submitVote(req.params.eventId, req.body);
+      const response = service.submitVote(req.params.eventId, req.body, req.header("Authorization"));
       res.status(200).json(response);
     } catch (error) {
       next(error);
@@ -33,7 +33,7 @@ export function createEventRoutes(service: EventService): Router {
 
   router.post("/events/:eventId/close", (req, res, next) => {
     try {
-      const response = service.closeDecision(req.params.eventId);
+      const response = service.closeDecision(req.params.eventId, req.header("Authorization"));
       res.status(200).json(response);
     } catch (error) {
       next(error);

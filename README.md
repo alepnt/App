@@ -5,7 +5,7 @@ API backend TypeScript/Express per l'MVP descritto nei documenti di prodotto.
 ## Struttura
 
 - `src/domain`: tipi e modelli dominio.
-- `src/repositories`: persistenza (in-memory, facilmente sostituibile con Supabase/Postgres).
+- `src/repositories`: persistenza JSON file-based (default `./data/events-store.json`).
 - `src/services`: business logic (create/join/vote/close).
 - `src/routes`: endpoint HTTP.
 - `src/shared`: errori condivisi.
@@ -13,11 +13,15 @@ API backend TypeScript/Express per l'MVP descritto nei documenti di prodotto.
 
 ## Endpoint principali
 
-- `POST /api/events`
-- `POST /api/events/join`
-- `POST /api/events/:eventId/votes`
-- `POST /api/events/:eventId/close`
-- `GET /api/events/:eventId`
+- `POST /api/v1/events`
+- `POST /api/v1/events/join`
+- `POST /api/v1/events/:eventId/votes` (richiede header `Authorization`)
+- `POST /api/v1/events/:eventId/close` (richiede token host in `Authorization`)
+- `GET /api/v1/events/:eventId`
+- `GET /api/v1/openapi`
+- `GET /metrics`
+
+Sono mantenuti anche gli endpoint legacy sotto `/api/*` per backward compatibility.
 
 ## Avvio
 
@@ -25,3 +29,8 @@ API backend TypeScript/Express per l'MVP descritto nei documenti di prodotto.
 npm install
 npm run dev
 ```
+
+## Variabili ambiente
+
+- `PORT` (default: `3000`)
+- `DATA_FILE_PATH` (default: `./data/events-store.json`)

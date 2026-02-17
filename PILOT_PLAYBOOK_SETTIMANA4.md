@@ -9,229 +9,229 @@
 
 ## 1) Piano pilot end-to-end
 
-### 1.1 Setup pilot
-- **Campione target:** 20–30 gruppi attivi in una singola città.
-- **Composizione consigliata:**
-  - 40% gruppi amici (uscite serali/weekend)
-  - 30% gruppi famiglia/coppie
-  - 30% gruppi lavoro/community
-- **Dimensione gruppi:** 3–8 membri per massimizzare attrito decisionale realistico.
-- **Criteri di inclusione:** almeno 2 decisioni collettive/settimana (cena, attività, location, orario).
-- **Criteri di esclusione:** gruppi con unico decisore dominante (bassa utilità del prodotto).
+## 1.1 Reclutamento gruppi (20–30)
+**Target gruppi**
+- 3–8 persone per gruppo (core use case decisioni sociali veloci).
+- Almeno 2 eventi/uscite pianificabili nelle 4 settimane.
+- Mix di segmenti: studenti, giovani professionisti, community hobby/sport.
 
-### 1.2 Reclutamento (72h)
-**Canali prioritari (veloci e misurabili):**
-1. Network warm (community manager, ambassador locali, referral founder).
-2. Partnership micro-locali (coworking, associazioni, community Telegram/WhatsApp locali).
-3. Referral tester-to-tester (incentivo piccolo ma immediato).
+**Canali di reclutamento (priorità)**
+1. Community manager/ambassador locali.
+2. Referral da primi gruppi attivati (incentivo "porta un gruppo").
+3. Outreach diretto in community chat esistenti (Telegram/WhatsApp/Discord).
 
-**Funnel reclutamento:**
-- Form candidatura breve (3 minuti): profilo gruppo, frequenza decisioni, disponibilità.
-- Screening asincrono: punteggio fit (0–10) su frequenza decisioni + varietà contesti.
-- Selezione a batch giornalieri (rolling admission).
-- Conferma ingresso + slot onboarding.
+**Funnel di reclutamento (SLA 72h)**
+- Giorno 0: contatto + mini pitch (30 sec value proposition).
+- Giorno 1: call/DM di qualificazione (5 min) + screening form.
+- Giorno 2: conferma idoneità + prenotazione onboarding.
+- Giorno 3: gruppo attivato con owner identificato.
 
-**Target conversione operativo:**
-- 80–100 lead → 40 colloqui leggeri → 20–30 gruppi attivi entro fine settimana.
+**Criteri minimi di idoneità**
+- Disponibilità a usare il prodotto per 4 settimane.
+- Disponibilità a rispondere a pulse survey rapide (≤60 sec).
+- Presenza di un "Group Champion" (referente operativo).
 
-### 1.3 Onboarding gruppi (standardizzato, 30 minuti)
-**Formato:** 1 sessione live breve + checklist self-serve.
+## 1.2 Onboarding gruppi
+**Formato onboarding (30 minuti, remoto o in presenza)**
+- 5' contesto + obiettivi pilot.
+- 10' setup guidato (creazione gruppo, primo evento, voto).
+- 10' simulazione end-to-end con caso reale del gruppo.
+- 5' allineamento su supporto, canali e aspettative.
 
-**Agenda onboarding:**
-1. Perché del pilot e aspettative (3 min).
-2. Setup gruppo e ruoli (admin + membri) (7 min).
-3. Simulazione guidata “prima decisione” (10 min).
-4. Best practice per ridurre attrito (5 min).
-5. Q&A + prossimi passi (5 min).
+**Pacchetto onboarding**
+- Quickstart one-pager (3 azioni: crea evento, invita, chiudi decisione).
+- Video demo <2 min.
+- FAQ "bloccanti frequenti".
+- Contatti supporto + tempi risposta.
 
-**Kit onboarding:**
-- Mini guida “Start in 10 minuti”.
-- Video demo 90 secondi.
-- FAQ errori frequenti.
-- Canale supporto dedicato (es. WhatsApp/Slack).
+**Activation checklist (D0–D2)**
+- Gruppo creato ✅
+- ≥70% membri invitati ✅
+- Primo evento creato ✅
+- Primo voto completato ✅
+- Primo feedback qualitativo raccolto ✅
 
-### 1.4 Supporto operativo durante pilot
-**Modello di supporto 3 livelli:**
-- **L1 (community ops):** blocchi semplici, reminder, best practice.
-- **L2 (product ops):** problemi di flusso decisione, attriti UX, workaround.
-- **L3 (engineering on-call):** bug critici, outage, integrità dati.
+## 1.3 Supporto operativo
+**Canali supporto**
+- Canale async dedicato (WhatsApp/Telegram) per Group Champion.
+- Office hour bisettimanale (30 min).
+- Escalation path per bug bloccanti (<4h first response).
 
-**SLA interni consigliati:**
-- Critico: risposta ≤30 min, workaround ≤2h.
-- Alto: risposta ≤4h, fix/priorità entro 24h.
-- Medio/Basso: raccolta in backlog sperimentale settimanale.
+**SLA supporto**
+- Critico (bloccante decisione): presa in carico <1h, workaround <4h.
+- Alto impatto: presa in carico <8h, fix/priorità entro sprint corrente.
+- Medio/Basso: backlog triage settimanale.
 
----
-
-## 2) Protocollo test (durata, frequenza eventi, raccolta feedback)
-
-### 2.1 Durata e struttura
-- **Durata complessiva:** 4 settimane.
-- **Cadence:**
-  - Checkpoint KPI: giornaliero (core metrics), settimanale (coorte).
-  - Sync interna tri-funzionale (Product/Design/Eng): 3 volte a settimana.
-  - Touchpoint tester: 2 volte a settimana per gruppo.
-
-### 2.2 Frequenza eventi richiesta ai tester
-- **Minimo obbligatorio per gruppo:** 2 decisioni reali/settimana.
-- **Target ideale:** 3–4 decisioni/settimana.
-- **Eventi consigliati:** scelta locale, scelta orario, scelta attività, piano weekend.
-
-### 2.3 KPI e strumentazione
-**KPI primari (decision speed):**
-- Median Decision Time (creazione decisione → outcome).
-- % decisioni concluse entro 15 minuti.
-- Drop-off nel funnel (invito → voto → decisione).
-
-**KPI secondari (adozione/qualità):**
-- Attivazione gruppo entro 24h dall’onboarding.
-- Partecipazione media membri per decisione.
-- NPS/CSAT post-evento.
-
-**Event tracking minimo:**
-- `group_created`, `member_joined`, `decision_started`, `option_added`, `vote_cast`, `decision_closed`, `decision_abandoned`.
-
-### 2.4 Raccolta feedback (mixed-method)
-**Quantitativo:**
-- Dashboard giornaliera KPI per gruppo/coorte.
-- Alert automatici su anomalie (es. aumento abandon rate >20%).
-
-**Qualitativo:**
-- Pulse survey ultra-breve post decisione (2 domande).
-- Intervista settimanale 15 min con campione 6–8 gruppi.
-- Debrief finale strutturato per tutti i group admin.
-
-**Template pulse (in-app):**
-1. “Quanto è stato facile arrivare a una decisione?” (1–5)
-2. “Cosa ti ha rallentato di più?” (risposta breve)
+**Ritmo operativo interno**
+- Daily 15' Pilot Ops stand-up (Product + Design + Tech + CX).
+- Triage bug/feedback 2 volte a settimana.
+- Retro settimanale su KPI + decisioni di iterazione.
 
 ---
 
-## 3) Framework priorità bug/feedback (impatto su Decision Time)
+## 2) Protocollo test (durata, frequenza eventi, feedback)
 
-## 3.1 Principio guida
-Qualsiasi item viene prioritizzato per **riduzione attesa del Decision Time** + **frequenza del problema** + **rischio trust/retention**.
+## 2.1 Durata e struttura
+- **Durata totale:** 4 settimane.
+- **Baseline:** primi 3–4 giorni per misurare comportamento iniziale.
+- **Iterazioni:** 2 cicli rapidi (fine settimana 2 e fine settimana 3).
 
-### 3.2 DT-Impact Score (0–100)
-**Formula operativa:**
+## 2.2 Frequenza eventi target
+- Minimo **1 evento/settimana** per gruppo.
+- Target ideale: **2 eventi/settimana** per gruppi attivi.
+- Soglia rischio churn: 0 eventi in 7 giorni -> trigger intervento CX.
 
-`DT-Impact Score = (Impatto su Decision Time x 0,45) + (Frequenza x 0,25) + (Blocco funnel x 0,20) + (Rischio fiducia x 0,10)`
+## 2.3 KPI da tracciare
+**Core KPI**
+- Median Decision Time per gruppo/evento.
+- Time-to-first-vote.
+- Completion rate del voto.
 
-Dove ogni componente è valutata su scala 0–100.
+**KPI di adozione**
+- % gruppi attivi settimanalmente.
+- # eventi creati per gruppo.
+- % membri attivi per evento.
 
-### 3.3 Classi di priorità
-- **P0 (>=80):** blocco decisione o perdita dati, azione immediata.
-- **P1 (60–79):** degrado forte di velocità/adozione, fix entro sprint corrente.
-- **P2 (40–59):** attrito non bloccante, pianificazione successiva.
-- **P3 (<40):** nice-to-have, rinvio salvo trend in crescita.
+**KPI qualitativi**
+- CSAT micro-survey post-evento.
+- Perceived clarity del flusso (1–5).
+- Top 3 frizioni riportate.
 
-### 3.4 Guardrail “alto impatto only”
-Un item entra in sviluppo solo se soddisfa almeno 1 criterio:
-- riduce Decision Time stimato ≥15%;
-- impatta ≥25% dei gruppi attivi;
-- aumenta completamento decisione ≥10 punti percentuali.
+## 2.4 Raccolta feedback (multi-layer)
+- **In-product pulse** dopo chiusura decisione (1 domanda + campo libero).
+- **Check-in settimanale** con Group Champion (10 minuti).
+- **Intervista finale** (20 minuti) su valore percepito e frizioni residue.
+
+**Regola anti-rumore**
+Un insight entra in roadmap solo se soddisfa almeno una condizione:
+1. Ricorre in ≥3 gruppi diversi.
+2. Impatta direttamente Decision Time.
+3. Blocca la completion del flusso decisionale.
+
+---
+
+## 3) Framework priorità bug/feedback (focus Decision Time)
+
+## 3.1 Score di priorità (DT-Impact Score)
+Formula rapida:
+
+**Priorità = Impatto su Decision Time x Frequenza x Severità UX x Confidenza**
+
+Dove ogni fattore è valutato 1–5.
+
+- **Impatto DT:** quanto riduce/aumenta il tempo decisionale.
+- **Frequenza:** quanti gruppi colpiti (% base pilot).
+- **Severità UX:** blocca, rallenta o solo infastidisce.
+- **Confidenza:** qualità evidenza (analytics + qualitativo).
+
+## 3.2 Classi operative
+- **P0 (immediato):** blocca voto/chiusura decisione, impatto DT massimo.
+- **P1 (questa settimana):** rallenta significativamente il flusso core.
+- **P2 (se resta capacità):** miglioramenti percepiti ma non critici.
+- **P3 (parcheggio):** nice-to-have o feedback singolo non validato.
+
+## 3.3 Policy di esecuzione
+- Durante pilot, capacity allocation:
+  - 70% bug/frizioni P0-P1 su flusso core.
+  - 20% miglioramenti UX ad alto leverage validati da dati.
+  - 10% debt tecnico minimo necessario.
+- No redesign estesi durante pilot.
 
 ---
 
 ## 4) Criteri go/no-go per beta pubblica limitata
 
-## 4.1 Go criteria (tutti o quasi tutti soddisfatti)
-- Almeno **70% gruppi attivi** dopo 4 settimane.
-- **Median Decision Time** ridotto di almeno **25%** vs baseline iniziale.
-- **Completion rate decisioni** ≥65%.
-- Nessun bug P0 aperto >48h.
-- CSAT medio ≥4/5 su facilità decisione.
+## 4.1 Gate quantitativi (go)
+Tutti i seguenti criteri devono essere rispettati nelle ultime 2 settimane:
+- Riduzione median Decision Time ≥20% vs baseline iniziale.
+- ≥60% gruppi attivi weekly.
+- Completion rate voto ≥75%.
+- Nessun bug P0 aperto >72h.
 
-### 4.2 No-go / Extend criteria
-- Retention gruppi <50%.
-- Decision Time in miglioramento <10%.
-- Funnel join→vote con drop-off critico persistente.
-- Più di 2 incidenti P0 nella stessa settimana.
+## 4.2 Gate qualitativi (go)
+- CSAT medio post-evento ≥4/5.
+- Frizione #1 identificata con piano fix chiaro e owner assegnato.
+- Group Champion: ≥70% dichiara "riutilizzerei il prodotto".
 
-### 4.3 Decisione finale
-- **GO:** lanciare beta limitata in 1–2 nuove aree con stesso protocollo.
-- **SOFT-GO:** espansione ridotta + 1 settimana extra hardening.
-- **NO-GO:** congelare acquisizione nuovi utenti e concentrarsi su fix P0/P1.
+## 4.3 No-go / Hold conditions
+- KPI core non migliorano dopo 2 iterazioni consecutive.
+- Persistono P0 ricorrenti sul flusso decisionale.
+- Alto tasso abbandono onboarding (>40% gruppi non attivati D+3).
+
+**Decisione finale:** review con Product, Engineering, Design, Ops; outcome = Go / Go con limiti / No-Go con piano correttivo 2 settimane.
 
 ---
 
 ## 5) Piano comunicazione ai gruppi tester
 
-### 5.1 Principi
-- Trasparenza: testiamo, impariamo, miglioriamo rapidamente.
-- Ritmo costante: pochi messaggi ma prevedibili.
-- Chiarezza aspettative: cosa chiediamo e cosa restituiamo.
+## 5.1 Cadence comunicazione
+- D-3: invito e aspettative pilot.
+- D0: kickoff + quickstart.
+- Ogni settimana: reminder uso + mini-report "cosa abbiamo migliorato".
+- Fine pilot: ringraziamento + survey finale + eventuale accesso prioritario beta.
 
-### 5.2 Cadence comunicazione
-- **T-3 giorni:** invito e conferma adesione.
-- **T-1 giorno:** reminder onboarding + materiale quick start.
-- **Settimanalmente:** update progress + cosa cambia nel prodotto.
-- **Fine pilot:** survey finale + ringraziamento + next steps.
+## 5.2 Tone of voice
+- Trasparente: "state co-costruendo il prodotto".
+- Breve e orientato ad azione.
+- Focus su impatto reale (tempo risparmiato nelle decisioni).
 
-### 5.3 Ownership comunicazione
-- Product Lead: messaggi strategici e update roadmap breve.
-- Community Ops: reminder, supporto, follow-up survey.
-- Design Research: gestione interviste qualitative.
+## 5.3 Messaggi chiave
+- Obiettivo: decisioni di gruppo più rapide, meno chat dispersive.
+- Cosa chiediamo: uso reale + feedback sintetico.
+- Cosa offriamo: supporto diretto, miglioramenti rapidi, riconoscimento early tester.
 
 ---
 
-## Timeline 4 settimane (owner & deliverable)
+## Timeline 4 settimane (owner + deliverable)
 
-| Settimana | Obiettivo | Owner primario | Deliverable chiave |
-|---|---|---|---|
-| W1 | Reclutare e attivare 20–30 gruppi | Product Ops + Community Ops | Lista gruppi attivi, onboarding completati, baseline KPI |
-| W2 | Stabilizzare uso e identificare colli di bottiglia | Product + Data Analyst | Report KPI settimanale, top 5 attriti, backlog P0/P1 ordinato |
-| W3 | Iterazioni UX ad alto impatto | Product + Design + Eng | Rilasci mirati su funnel decisione, misure pre/post su Decision Time |
-| W4 | Validazione finale e decisione go/no-go | Head of Product + Eng Lead | Decision memo go/no-go, piano beta limitata, retro pilot |
+| Settimana | Obiettivo | Attività chiave | Owner | Deliverable |
+|---|---|---|---|---|
+| W1 | Attivazione pilot | Reclutamento 20–30 gruppi, onboarding, setup tracking KPI baseline | Head of Product Exp + CX Lead | 20–30 gruppi attivi, dashboard baseline, backlog iniziale |
+| W2 | Stabilizzare uso | Monitoraggio eventi, supporto intensivo, triage P0/P1, iterazione UX #1 | Product Manager + Engineering Lead + Designer | Fix critici rilasciati, report KPI W2, decision log |
+| W3 | Ottimizzare conversione decisione | Iterazione UX #2 su frizioni top, coaching gruppi a bassa attività, validazione miglioramenti | Product + Design + CX | Delta KPI vs baseline, evidenze qual/quant consolidate |
+| W4 | Valutazione go/no-go | Chiusura raccolta dati, survey/interviste finali, business review beta limitata | Head of Product Exp + Leadership trio | Raccomandazione Go/No-Go, piano beta limitata, comunicazione finale tester |
 
 ---
 
 ## Modelli messaggi
 
-### A) Invito tester
-**Oggetto:** Ti va di testare in anteprima [Nome Prodotto] con il tuo gruppo?
+## A) Invito tester
+**Oggetto:** Ti va di entrare nel pilot Planit (4 settimane)?
 
 Ciao **[Nome]**,  
-stiamo lanciando un pilot locale con pochi gruppi selezionati per rendere più veloce prendere decisioni insieme (uscite, orari, attività).  
+stiamo lanciando un pilot locale con pochi gruppi selezionati per rendere le decisioni di gruppo molto più veloci (uscite, cene, attività).
 
-Cerchiamo gruppi da **3 a 8 persone** disponibili per **4 settimane**, con almeno **2 decisioni reali a settimana**.  
+**Cosa ti chiediamo:**
+- usare Planit per 4 settimane con il tuo gruppo;
+- creare almeno 1 evento a settimana;
+- condividere feedback rapido (60 secondi).
 
-Cosa ottieni:
-- accesso anticipato;
+**Cosa ottieni:**
 - supporto diretto dal team prodotto;
-- possibilità concreta di influenzare roadmap e UX.
+- miglioramenti rapidi basati sui tuoi input;
+- accesso prioritario alla beta successiva.
 
-Se ti interessa, compila questo form (3 minuti): **[link]**  
-Grazie!  
-**[Firma Team]**
+Se vuoi partecipare, rispondi con **"CI STO"** e ti mandiamo i prossimi step (2 minuti).  
+Grazie! 🙌
 
-### B) Reminder settimanale
-Ciao **[Nome Gruppo]** 👋  
-mini reminder del pilot di questa settimana:
-1. fate almeno **2 decisioni reali** nel gruppo;
-2. compilate il micro-feedback post decisione (30 secondi);
-3. se qualcosa vi blocca, scriveteci qui: **[canale supporto]**.
+## B) Reminder settimanale
+Ciao **[Nome]** 👋  
+check veloce pilot settimana **[X]**:
+- questa settimana prova a lanciare almeno **1 decisione reale** nel gruppo;
+- se trovi attriti, scrivici subito qui (anche in una riga);
+- abbiamo già migliorato: **[1-2 miglioramenti concreti]**.
 
-Questa settimana abbiamo già migliorato **[feature/fix]** grazie ai vostri feedback 🙌
+Obiettivo: ridurre ancora il tempo per arrivare a una decisione condivisa.  
+Grazie per il contributo!
 
-### C) Survey finale
-**Oggetto:** Ultimo step pilot: 4 minuti di survey finale
+## C) Survey finale
+Ciao **[Nome]**, siamo all'ultimo step 🎯  
+ci aiuti con una survey finale (3 minuti)? **[link]**
 
-Grazie per aver partecipato al pilot 🎉  
-Per chiudere il test ci aiuta moltissimo una survey finale di 4 minuti: **[link survey]**
+Domande chiave:
+1. Quanto è stato più rapido decidere con Planit? (1–5)
+2. In quali passaggi hai perso più tempo?
+3. Qual è il miglioramento #1 che vorresti subito?
+4. Useresti Planit nelle prossime settimane? (Sì/No, perché)
 
-Ci interessano soprattutto:
-- facilità nel raggiungere una decisione;
-- momenti di frizione più forti;
-- funzionalità che vi hanno fatto risparmiare più tempo.
-
-Come grazie, riceverete **[reward/incentivo]** entro **[data]**.  
-**[Firma Team]**
-
----
-
-## Riti operativi (per mantenere velocità di apprendimento)
-- Daily 15 min: metriche, blocchi, decisioni da prendere oggi.
-- Triage P0/P1 a giorni alterni con owner nominato.
-- “Kill fast” rule: se un’iterazione non migliora KPI in 3–5 giorni, rollback o rework.
-- Memo settimanale 1 pagina: insight, decisioni prese, impatto misurato, next experiments.
+Il tuo feedback guida la decisione per la beta limitata. Grazie davvero per la co-creazione 🚀

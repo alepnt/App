@@ -38,7 +38,34 @@ describe("Planit MVP API", () => {
     expect(voteResponse.body.totals[0].votes).toBe(1);
   });
 
-  it("chiude la decisione con winner", async () => {
+  it("non permette join duplicato con stesso nome", async () => {
+    const app = createApp();
+
+    const createResponse = await request(app).post("/api/events").send({
+      title: "Team lunch",
+      closeAt: new Date(Date.now() + 60_000).toISOString(),
+      options: ["Burger", "Pokè"],
+      hostName: "Anna",
+    });
+
+    const inviteToken = (createResponse.body.inviteLink as string).replace("/join/", "");
+
+    const firstJoinResponse = await request(app).post("/api/events/join").send({
+      inviteToken,
+      guestName: "Sara",
+    });
+
+    const secondJoinResponse = await request(app).post("/api/events/join").send({
+      inviteToken,
+      guestName: "Sara",
+    });
+
+    expect(firstJoinResponse.status).toBe(200);
+    expect(secondJoinResponse.status).toBe(200);
+    expect(secondJoinResponse.body.participantId).toBe(firstJoinResponse.body.participantId);
+  });
+
+  it("consente la chiusura solo all'host", async () => {
     const app = createApp();
 
     const createResponse = await request(app).post("/api/events").send({
@@ -49,9 +76,27 @@ describe("Planit MVP API", () => {
     });
 
     const eventId = createResponse.body.eventId as string;
-    const closeResponse = await request(app).post(`/api/events/${eventId}/close`).send();
+    const inviteToken = (createResponse.body.inviteLink as string).replace("/join/", "");
 
-    expect(closeResponse.status).toBe(200);
-    expect(closeResponse.body.status).toBe("closed");
+    const joinResponse = await request(app).post("/api/events/join").send({
+      inviteToken,
+      guestName: "Sara",
+    });
+
+    const guestCloseResponse = await request(app).post(`/api/events/${eventId}/close`).send({
+      participantId: joinResponse.body.participantId,
+    });
+
+    expect(guestCloseResponse.status).toBe(403);
+
+    const snapshotResponse = await request(app).get(`/api/events/${eventId}`);
+    const hostParticipant = snapshotResponse.body.participants.find((participant: { role: string }) => participant.role === "host");
+
+    const hostCloseResponse = await request(app).post(`/api/events/${eventId}/close`).send({
+      participantId: hostParticipant.id,
+    });
+
+    expect(hostCloseResponse.status).toBe(200);
+    expect(hostCloseResponse.body.status).toBe("closed");
   });
 });

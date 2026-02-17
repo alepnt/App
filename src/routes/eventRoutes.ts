@@ -33,7 +33,7 @@ export function createEventRoutes(service: EventService): Router {
 
   router.post("/events/:eventId/close", (req, res, next) => {
     try {
-      const response = service.closeDecision(req.params.eventId);
+      const response = service.closeDecision(req.params.eventId, req.body);
       res.status(200).json(response);
     } catch (error) {
       next(error);

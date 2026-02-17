@@ -1,11 +1,9 @@
-# Pilot Playbook Operativo — Settimana 4
+# Pilot Playbook Operativo — Settimana 4 (Head of Product Experimentation)
 
-## Obiettivo del pilot
-Validare in condizioni reali l'ipotesi che Planit riduca il **Decision Time** nei gruppi, massimizzando la velocità di apprendimento rispetto alla perfezione di esecuzione.
-
-- **Ambito:** 20–30 gruppi in una città.
-- **North Star del pilot:** riduzione Decision Time rispetto al baseline del gruppo.
-- **Principio operativo:** solo ottimizzazioni UX ad alto impatto sui KPI core.
+## North Star del pilot
+- **Obiettivo primario:** ridurre il **Decision Time** medio per gruppo evento-to-decisione.
+- **Vincolo operativo:** velocità di apprendimento > perfezione.
+- **Regola di focus:** intervenire solo su ottimizzazioni ad alto impatto su Decision Time, attivazione e completamento decisione.
 
 ---
 
